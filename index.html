@@ -16,19 +16,32 @@
                     <div class="branded">BLASTED Apparel</div>
                 </div>
                 <ul class="navigation">
+<<<<<<< HEAD
+                    <li><a href="html/home.html">HOME</a></li>
+                    <li><a href="html/about.html">ABOUT US</a></li>
+                    <li><a href="html/shop.html">SHOP</a></li>
+                    <li><a href="html/contact.html">CONTACT</a></li>
+                    <li><a href="html/login.html" class="login">LOG IN</a></li>
+=======
                     <li><a href="home.html">HOME</a></li>
                     <li><a href="about.html">ABOUT US</a></li>
                     <li><a href="shop.html">SHOP</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <li><a href="login.html" class="login">LOG IN</a></li>
+>>>>>>> 78c82eabd17492f653d4b101043b6c363c212157
                 </ul>
             </nav>
         </div>
 <div class="form-box">
     <div class="button-box">
         <div id="btn"></div>
+<<<<<<< HEAD
+        <button type="button" class="toggle-button"><a href="html/login.html">Log In</a></button>
+        <button type="button" class="toggle-button"><a href="html/index.html">Register</a></button>
+=======
         <button type="button" class="toggle-button"><a href="login.html">Log In</a></button>
         <button type="button" class="toggle-button"><a href="index.html">Register</a></button>
+>>>>>>> 78c82eabd17492f653d4b101043b6c363c212157
     </div>
     <div class="socialmedia-icon">
         <img src="image/facebook.png" alt="#">
@@ -36,12 +49,16 @@
         <img src="image/twitter.png" alt="#">
     </div>
     <form id="register" class="input-group">
-        <input type="text" class="input-field" placeholder="Nama / User Id" required>
-        <input type="text" class="input-field" placeholder="Alamat" required>
+        <input type="text" class="input-field" placeholder="Username" required>
+        <input type="text" class="input-field" placeholder="Address" required>
         <input type="email" class="input-field" placeholder="Email" required>
-        <input type="number" class="input-field" placeholder="No HP" minlength="10" maxlength="12" required>
-        <input type="number" class="input-field" placeholder="Kode Pos" required>
-        <input type="text" class="input-field" placeholder="Jenis Kelamin" required>
+        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" class="input-field" placeholder="Phone Number" maxlength ="13"required>
+        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" class="input-field" placeholder="Postal Code" maxlength ="5"required>
+        <input type="radio" name="gender">
+        <label for="Male">Male</label>
+        <input type="radio" name="gender">
+        <label for="Female">Female</label>
+        <input type="text" class="input-field" id="rupiah" placeholder="Salary" required>
         <select id="agama" class="input-field">
             <option >Islam</option>
             <option>Kristen</option>
@@ -50,9 +67,37 @@
             <option>Budha</option>
             <option>Konghuchu</option>
         </select>
+<<<<<<< HEAD
+        <button type="submit" class="submit-button"><a href="html/login.html">Register</a></button>
+=======
         <button type="submit" class="submit-button"><a href="login.html">Register</a></button>
+>>>>>>> 78c82eabd17492f653d4b101043b6c363c212157
     </form>
 </div>
     </div>
+
+    <script type="text/javascript">
+
+        var rupiah = document.getElementById('rupiah');
+        rupiah.addEventListener('keyup', function(e){
+            rupiah.value = formatRupiah(this.value, 'Rp. ');
+        })
+        function formatRupiah(angka, prefix){
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length %3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] !=undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        }
+    </script>
+    
 </body>
 </html>
